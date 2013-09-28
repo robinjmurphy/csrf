@@ -13,6 +13,7 @@ exports.index = function (req, res) {
     res.render('index', {
       title: 'Trusted Site',
       authenticated: authenticated,
+      _csrf: req.session._csrf,
       status: status,
       authenticatedText: function () {
         return (authenticated) ? 'authenticated' : 'unauthenticated';

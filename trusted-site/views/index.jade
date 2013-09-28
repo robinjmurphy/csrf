@@ -17,6 +17,7 @@ block content
         p.status-text.empty You haven't updated your status.
       form(method="post", action="/user/status")
         p Update your status
+        input(type="hidden", name="_csrf", value="#{_csrf}")
         input(placeholder="What are you doing?", size="50", id="status", name="status")
         p
           input(type="submit", value="Update status")
