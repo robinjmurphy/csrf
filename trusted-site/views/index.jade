@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= title
+  p(class="#{authenticatedText()}") You are currently #{authenticatedText()}
+  div.buttons
+    a(href="/authenticate")
+      button.authenticate Authenticate me
+    a(href="/user/unauthenticate")
+      button.unathenticate Unauthenticate me
+  if authenticated
+    div.status
+      h2 Your status
+      if status
+        p.status-text= status
+      else
+        p.status-text.empty You haven't updated your status.
+      form(method="post", action="/user/status")
+        p Update your status
+        input(placeholder="What are you doing?", size="50", id="status", name="status")
+        p
+          input(type="submit", value="Update status")

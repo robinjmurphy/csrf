@@ -1,0 +1,38 @@
+body {
+  padding: 2em;
+  font: 16px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.authenticated {
+    color: #1F7C65;
+}
+
+.unauthenticated {
+    color: #9B001C;
+}
+
+.authenticated:before {
+    content: '\2713 ';
+}
+
+.unauthenticated:before {
+    content: '\2717 ';
+}
+
+.status-text {
+    border: 2px solid #1F7C65;
+    color: #1F7C65;
+    border-radius: 5px;
+    padding: 1em;
+}
+
+.empty {
+  border-color: #9B001C;
+  color: #9B001C;
+}
+
+#status {
+    font-size: 1em;
+    padding: 0.5em;
+    font-family: inherit;
+}
