@@ -30,6 +30,7 @@ if ('development' === app.get('env')) {
 }
 
 app.all('*', interceptors.cacheability);
+app.post('*', interceptors.tokenValidator);
 app.get('/', routes.index);
 app.get('/authenticate', routes.auth.authenticate);
 app.all('/user/*', interceptors.authorization);

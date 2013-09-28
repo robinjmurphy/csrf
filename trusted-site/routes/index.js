@@ -1,5 +1,6 @@
 var authenticator = require('../services/authenticator');
 var statusService = require('../services/statusService');
+var tokenService = require('../services/tokenService');
 var async = require('async');
 
 exports.index = function (req, res) {
@@ -14,6 +15,7 @@ exports.index = function (req, res) {
       title: 'Trusted Site',
       authenticated: authenticated,
       status: status,
+      _csrf: tokenService.getToken(req.sessionID),
       authenticatedText: function () {
         return (authenticated) ? 'authenticated' : 'unauthenticated';
       }
