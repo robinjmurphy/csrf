@@ -16,3 +16,12 @@ exports.cacheability = function (req, res, next) {
   res.setHeader('Expires', '-1');
   next();
 };
+
+exports.referrerCheck = function (req, res, next) {
+  if (req.get('Referrer').match(/^http:\/\/localhost:3000/)) {
+    return next();
+  } else {
+    res.status(403);
+    res.end('Forbidden');
+  }
+};
