@@ -19,7 +19,7 @@ app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.cookieParser());
-app.use(express.session({ secret: "my-secret" }));
+app.use(express.session({ secret: "my-secret", cookie: {httpOnly: false} }));
 app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
@@ -30,6 +30,7 @@ if ('development' === app.get('env')) {
 }
 
 app.all('*', interceptors.cacheability);
+app.post('*', interceptors.csrfValidator);
 app.get('/', routes.index);
 app.get('/authenticate', routes.auth.authenticate);
 app.all('/user/*', interceptors.authorization);
